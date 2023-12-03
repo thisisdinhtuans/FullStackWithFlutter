@@ -1,0 +1,11 @@
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\bin\Debug\net5.0\FullStackWithFlutter.Core.deps.json
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\bin\Debug\net5.0\FullStackWithFlutter.Core.dll
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\bin\Debug\net5.0\FullStackWithFlutter.Core.pdb
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\obj\Debug\net5.0\FullStackWithFlutter.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\obj\Debug\net5.0\FullStackWithFlutter.Core.AssemblyInfoInputs.cache
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\obj\Debug\net5.0\FullStackWithFlutter.Core.AssemblyInfo.cs
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\obj\Debug\net5.0\FullStackWithFlutter.Core.csproj.CoreCompileInputs.cache
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\obj\Debug\net5.0\FullStackWithFlutter.Core.dll
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\obj\Debug\net5.0\refint\FullStackWithFlutter.Core.dll
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\obj\Debug\net5.0\FullStackWithFlutter.Core.pdb
+D:\code\Youtube\December\FullStackWithFlutter\FullStackWithFlutter.Core\obj\Debug\net5.0\ref\FullStackWithFlutter.Core.dll
