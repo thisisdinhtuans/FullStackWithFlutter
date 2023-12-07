@@ -1,5 +1,5 @@
-class UserResponse {
-  UserResponse({
+class UserListResponse {
+  UserListResponse({
     required this.status,
     required this.message,
     required this.data,
@@ -9,8 +9,8 @@ class UserResponse {
   final String? message;
   final List<User> data;
 
-  factory UserResponse.fromJson(Map<String, dynamic> json) {
-    return UserResponse(
+  factory UserListResponse.fromJson(Map<String, dynamic> json) {
+    return UserListResponse(
       status: json["status"],
       message: json["message"],
       data: json["data"] == null
