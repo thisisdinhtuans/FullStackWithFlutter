@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fullstackwithflutter_ui/providers/user_provider.dart';
 
 class UserListScreen extends StatefulWidget {
   const UserListScreen({super.key});
@@ -18,10 +20,49 @@ class _UserListScreenState extends State<UserListScreen> {
         ),
         body: Center(
           child: Column(
-            children: const [Text("test")],
+            children: const [
+              Text("test"),
+              UsersListView(),
+            ],
           ),
         ),
       ),
     );
+  }
+}
+
+class UsersListView extends ConsumerWidget {
+  const UsersListView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lstUsers = ref.watch(usersList);
+    return lstUsers.when(
+        data: (users) {
+          return Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async {
+                ref.refresh(usersList);
+              },
+              child: ListView.builder(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemCount: users.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: ListTile(
+                          title: Text(users.data[index].fullName),
+                          subtitle:
+                              Text(users.data[index].mobileNumber.toString()),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          );
+        },
+        error: (err, stack) => Text('Error $err'),
+        loading: () => const Center(child: CircularProgressIndicator()));
   }
 }

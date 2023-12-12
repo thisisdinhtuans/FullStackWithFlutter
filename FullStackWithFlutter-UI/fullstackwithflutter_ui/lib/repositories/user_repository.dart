@@ -7,16 +7,18 @@ abstract class IUserRepository {
 }
 
 class UserRepository implements IUserRepository {
-  final _host = "https://10.0.2.2:44370/api/User/";
+  final _host = "https://10.0.2.2:5001/api/User/";
   final Map<String, String> _headers = {
     "Accept": "application/json",
-    "contect-type": "application/json",
+    "content-type": "application/json",
   };
 
   @override
   Future<UserListResponse> fetchUsersList() async {
     var getAllUsersUrl = _host + "GetAll";
+    print("Request URL: $getAllUsersUrl");
     var results = await http.get(Uri.parse(getAllUsersUrl), headers: _headers);
+    // print(results);
     final jsonObject = json.decode(results.body);
     var response = UserListResponse.fromJson(jsonObject);
     return response;
