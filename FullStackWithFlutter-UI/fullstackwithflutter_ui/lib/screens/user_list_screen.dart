@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fullstackwithflutter_ui/providers/user_provider.dart';
+import 'package:fullstackwithflutter_ui/screens/userform_screen.dart';
 
 class UserListScreen extends StatefulWidget {
   const UserListScreen({super.key});
-
+  static const String routeName = "/userlist";
   @override
   State<UserListScreen> createState() => _UserListScreenState();
 }
@@ -26,6 +27,12 @@ class _UserListScreenState extends State<UserListScreen> {
             ],
           ),
         ),
+        floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.pushNamed(context, UserFormScreen.routeName);
+            },
+            label: const Text("Create new user"),
+            icon: const Icon(Icons.account_circle)),
       ),
     );
   }
@@ -42,7 +49,7 @@ class UsersListView extends ConsumerWidget {
           return Expanded(
             child: RefreshIndicator(
               onRefresh: () async {
-                ref.refresh(usersList);
+                await ref.refresh(usersList);
               },
               child: ListView.builder(
                   physics: const AlwaysScrollableScrollPhysics(),
