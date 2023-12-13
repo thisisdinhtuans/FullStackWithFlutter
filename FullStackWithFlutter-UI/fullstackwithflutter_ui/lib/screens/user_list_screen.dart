@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fullstackwithflutter_ui/providers/user_provider.dart';
 import 'package:fullstackwithflutter_ui/screens/userform_screen.dart';
+import 'package:fullstackwithflutter_ui/screens/userview_screen.dart';
 
 class UserListScreen extends StatefulWidget {
   const UserListScreen({super.key});
@@ -58,10 +59,17 @@ class UsersListView extends ConsumerWidget {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Card(
-                        child: ListTile(
-                          title: Text(users.data[index].fullName),
-                          subtitle:
-                              Text(users.data[index].mobileNumber.toString()),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                                UserViewScreen.routeName,
+                                arguments: users.data[index].id.toString());
+                          },
+                          child: ListTile(
+                            title: Text(users.data[index].fullName),
+                            subtitle:
+                                Text(users.data[index].mobileNumber.toString()),
+                          ),
                         ),
                       ),
                     );

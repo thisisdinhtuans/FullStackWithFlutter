@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fullstackwithflutter_ui/screens/userform_screen.dart';
+import 'package:fullstackwithflutter_ui/screens/userview_screen.dart';
 
 import 'screens/user_list_screen.dart';
 
@@ -54,6 +55,9 @@ class MyApp extends StatelessWidget {
       routes: {
         UserListScreen.routeName: (ctx) => const UserListScreen(),
         UserFormScreen.routeName: (ctx) => const UserFormScreen(),
+        UserViewScreen.routeName: (ctx) => UserViewScreen(
+              userObject: ModalRoute.of(ctx)!.settings.arguments,
+            )
       },
     );
   }

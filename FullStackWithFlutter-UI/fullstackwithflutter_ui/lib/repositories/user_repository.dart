@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 abstract class IUserRepository {
   Future<UserListResponse> fetchUsersList();
   Future<UserResponse> createNewUser(User user);
+  Future<UserResponse> getUserById(int userId);
 }
 
 class UserRepository implements IUserRepository {
@@ -19,7 +20,7 @@ class UserRepository implements IUserRepository {
   @override
   Future<UserListResponse> fetchUsersList() async {
     var getAllUsersUrl = _host + "GetAll";
-    print("Request URL: $getAllUsersUrl");
+    // print("Request URL: $getAllUsersUrl");
     var results = await http.get(Uri.parse(getAllUsersUrl), headers: _headers);
     // print(results);
     final jsonObject = json.decode(results.body);
@@ -34,6 +35,17 @@ class UserRepository implements IUserRepository {
     var results = await http.post(Uri.parse(url),
         body: _body, headers: _headers, encoding: Encoding.getByName("utf-8"));
 
+    final jsonObject = json.decode(results.body);
+    var response = UserResponse.fromJson(jsonObject);
+    return response;
+  }
+
+  @override
+  Future<UserResponse> getUserById(int userId) async {
+    var url = _host + userId.toString();
+    // print("Request URL: $getAllUsersUrl");
+    var results = await http.get(Uri.parse(url), headers: _headers);
+    // print(results);
     final jsonObject = json.decode(results.body);
     var response = UserResponse.fromJson(jsonObject);
     return response;

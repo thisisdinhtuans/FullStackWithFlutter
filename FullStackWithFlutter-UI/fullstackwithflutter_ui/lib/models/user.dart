@@ -83,6 +83,9 @@ class UserResponse {
 
   factory UserResponse.fromJson(Map<String, dynamic> json) {
     return UserResponse(
-        status: json["status"], message: json["message"], data: json["data"]);
+      status: json["status"],
+      message: json["message"],
+      data: json["data"] != null ? User.fromJson(json["data"]) : null,
+    );
   }
 }
