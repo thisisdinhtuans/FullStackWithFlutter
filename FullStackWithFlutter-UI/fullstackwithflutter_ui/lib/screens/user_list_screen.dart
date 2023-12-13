@@ -57,22 +57,55 @@ class UsersListView extends ConsumerWidget {
                   itemCount: users.data.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Card(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushNamed(
-                                UserViewScreen.routeName,
-                                arguments: users.data[index].id.toString());
-                          },
-                          child: ListTile(
-                            title: Text(users.data[index].fullName),
-                            subtitle:
-                                Text(users.data[index].mobileNumber.toString()),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Card(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                  UserViewScreen.routeName,
+                                  arguments: users.data[index].id.toString());
+                            },
+                            child: ListTile(
+                              title: Text(users.data[index].fullName),
+                              subtitle: Text(
+                                  users.data[index].mobileNumber.toString()),
+                              trailing: SizedBox(
+                                width: 80,
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(3.0),
+                                      child: GestureDetector(
+                                        child: const Icon(Icons.edit,
+                                            color: Colors.purple),
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const UserFormScreen(),
+                                                settings: RouteSettings(
+                                                    name: "editPerson",
+                                                    arguments:
+                                                        (users.data[index]))),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(3.0),
+                                      child: GestureDetector(
+                                        child: const Icon(Icons.delete,
+                                            color: Colors.red),
+                                        onTap: () {},
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    );
+                        ));
                   }),
             ),
           );
